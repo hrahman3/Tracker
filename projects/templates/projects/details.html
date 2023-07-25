@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project Alpha</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'list_projects' %}">My projects</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'signup' %}">Signup</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
     <main>
         <div>
             <h1>{{ project.name }}</h1>
